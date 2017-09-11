@@ -1,0 +1,15 @@
+<div class="container" id="students">
+  <h3 class="title">Alunos Cadastrados: </h3>
+  <div class="row">
+    <div *ngFor="let student of students | async | orderBy: 'name'" class="col-4 student">
+      <div class="card">
+        <img class="card-img-top" [src]="student.profileImage" alt="student-image">
+        <div class="card-block">
+          <h5 class="card-title">{{ student.name }}</h5>
+          <h6 class="card-title">{{ student.cwiName }}</h6>
+          <a [routerLink]="['/students', student.cwiName]" class="btn btn-block btn-primary">Verificar Avaliações</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

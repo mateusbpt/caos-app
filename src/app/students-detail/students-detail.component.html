@@ -1,0 +1,32 @@
+<div class="container-fluid" id="detail">
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <img class="card-img-top" [src]="student.profileImage" alt="student-image">
+        <div class="card-block">
+          <h6 class="card-title">{{ student.name }}</h6>
+          <div class="card-title">{{ student.cwiName }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <h4>Avaliações: </h4>
+      <div class="box" *ngIf="!student.avaliations">
+        <h6> O aluno não possui avaliações.</h6>
+      </div>
+      <div *ngIf="student.avaliations" class="col-12">
+        <div class="box" *ngFor="let avaliation of student.avaliations | orderBy: title: true">
+          <h6 class="title">{{ avaliation.title }}</h6>
+          <div class="box-mark">
+            <markdown [(data)]="avaliation.text"></markdown>
+          </div>
+          <hr>
+          <div class="bottom-box">
+            <div>Avaliado por: {{ avaliation.monitorName }}</div>
+            <div>Data da Avaliação: {{ avaliation.dateAvaliation | date: 'dd/MM/yyyy - hh:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../providers/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,18 @@ import { AuthService } from '../providers/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
+    this.authService.afa.authState.subscribe(auth => {
+      if(auth != null) {
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  isFormInvalid(f: NgForm){
+    return !f.form.valid;
   }
 
   formLogin(f: NgForm) {
@@ -24,7 +34,7 @@ export class LoginComponent implements OnInit {
     .then(res => {
       this.router.navigate(['']);
     }).catch(res => {
-      console.log(res.message);
+      this.toastr.error('Usuário ou senha incorretos, tente novamente.', 'Erro');
     });
   };
 

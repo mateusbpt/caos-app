@@ -1,6 +1,64 @@
-<div class="container">
-  <div>
-    <h1>Home</h1>
-    <button class="btn btn-primary" (click)="logout()">Logout</button>
+<div class="container-fluid" id="home">
+  <div class="row">
+    <div class="col-2">
+      <div class="list-group table-of-contents">
+        <a class="list-group-item list-group-item-action" href="#avaliacoes">Cadastro de Avaliações</a>
+        <a class="list-group-item list-group-item-action" href="#alunos">Cadastro de Alunos</a>
+      </div>
+    </div>
+    <div class="col-10 forms">
+      <h4>Cadastro de Avaliações: </h4>
+      <h6>Cadastro de avaliações realizadas para um aluno</h6>
+      <form id="avaliacao" #g="ngForm" (submit)="formAddAvaliation(g)">
+        <div class="row">
+          <div class="form-group col-12">
+            <label>Título da Avaliação: </label>
+            <input type="text" class="form-control" ngModel name="title" required>
+          </div>
+          <div class="form-group col-6">
+            <label>Avaliação (aceita o formato markdown): </label>
+            <textarea class="form-control" ngModel name="text" rows="25" required></textarea>
+          </div>
+          <div class="form-group col-6">
+            <label>Preview: </label>
+            <div class="max-size">
+                <markdown *ngIf="g.value.text" [(data)]="g.value.text"></markdown>
+            </div>
+          </div>
+          <div class="form-group col-6">
+            <label>Avaliador: </label>
+            <input type="text" class="form-control" ngModel name="monitorName" required>
+          </div>
+          <div class="form-group col-6">
+            <label>Aluno Avaliado</label>
+            <select class="form-control" ngModel name="studentKey" required>
+                <option *ngFor="let student of students | async | orderBy: 'name'" [value]="student.$key">{{ student.name }}</option>
+            </select>
+          </div>
+        </div>
+        <button [disabled]="isFormInvalid(g)" type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+      <hr>
+      <h4>Cadastro de Alunos: </h4>
+      <h6>Cadastro dos alunos para gerenciamento das avaliações</h6>
+      <form id="alunos" #f="ngForm" (submit)="formAddStudent(f)">
+        <div class="row">
+          <div class="form-group col-6">
+            <label>Nome: </label>
+            <input type="text" class="form-control" ngModel name="name" required>
+          </div>
+          <div class="form-group col-6">
+            <label>CWI Usuário: </label>
+            <input type="text" class="form-control" ngModel name="cwiName" required>
+          </div>
+          <div class="form-group col-6">
+            <label>Imagem do Perfil URL: </label>
+            <input type="text" class="form-control" ngModel name="profileImage" required>
+          </div>
+        </div>
+        <button [disabled]="isFormInvalid(f)" type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+    </div>
   </div>
 </div>
+

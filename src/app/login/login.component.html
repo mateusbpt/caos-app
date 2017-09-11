@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" id="login">
   <div class="row justify-content-center">
-    <div class="col-6 jumbotron">
-      <h2 style="text-align: center">CAOS app</h2>
+    <div class="col-8">
+      <h2 class="text-center">CAOS.APP</h2>
+      <h6 class="text-center">Informe o e-mail e a senha para acessar a aplicação</h6>
       <form #f="ngForm" (submit)="formLogin(f)">
         <div class="form-group">
           <label>Email:</label>
@@ -11,7 +12,7 @@
           <label>Senha:</label>
           <input type="password" class="form-control" ngModel name="password" placeholder="Informe a senha" required>
         </div>
-        <button type="submit" class="btn btn-block btn-success">Logar</button>
+        <button [disabled]="isFormInvalid(f)" type="submit" class="btn btn-block btn-primary">Logar</button>
       </form>
     </div>
   </div>
