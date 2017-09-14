@@ -15,19 +15,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.afa.authState.subscribe(auth => {
-      if(auth != null) {
+      if (auth != null) {
         this.router.navigate(['']);
       }
     });
   }
 
-  isFormInvalid(f: NgForm){
+  isFormInvalid(f: NgForm) {
     return !f.form.valid;
   }
 
   formLogin(f: NgForm) {
     this.login(f.form.controls.email.value, f.form.controls.password.value);
-  };
+  }
 
   login(email: string, password: string) {
     this.authService.login(email, password)
@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
     }).catch(res => {
       this.toastr.error('Usuário ou senha incorretos, tente novamente.', 'Erro');
     });
-  };
+  }
 
 }

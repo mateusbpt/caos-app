@@ -10,7 +10,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class StudentsDetailComponent implements OnInit {
 
   students: FirebaseListObservable<any[]>;
-  student: any; 
+  student: any;
 
   constructor(private router: Router, private activeRoute: ActivatedRoute, private db: AngularFireDatabase) { 
     this.students = db.list('/students');
@@ -25,7 +25,7 @@ export class StudentsDetailComponent implements OnInit {
   findByName(cwiName: string) {
     return this.students.subscribe(students => {
       this.student = students.find(e => e.cwiName === cwiName);
-      if(!this.student){
+      if (!this.student) {
         this.router.navigate(['students']);
       }
     });

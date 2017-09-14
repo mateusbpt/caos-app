@@ -24,15 +24,17 @@ import { AuthService } from './providers/auth.service';
 import { MarkdownModule } from 'angular2-markdown';
 import { StudentsDetailComponent } from './students-detail/students-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AvaliationComponent } from './avaliation/avaliation.component';
 
 
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: StudentsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'students', component: StudentsComponent }, 
-  { path: 'students/:name', component: StudentsDetailComponent },  
+  { path: 'register', component: HomeComponent  },
+  { path: 'avaliation', component: AvaliationComponent },
+  { path: 'student/:name', component: StudentsDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -43,7 +45,8 @@ const routes: Routes = [
     HomeComponent,
     StudentsComponent,
     StudentsDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AvaliationComponent
   ],
   imports: [
     BrowserModule,

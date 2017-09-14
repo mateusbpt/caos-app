@@ -10,20 +10,20 @@ import { AuthService } from './providers/auth.service'
 export class AppComponent {
 
   isLogged: Boolean;
-  
+
   constructor(private authService: AuthService, private router: Router){
     this.authService.afa.authState.subscribe(
       auth => {
-        if(auth == null) {
+        if (auth == null) {
            this.isLogged = false;
-           this.router.navigate(['login']); 
+           this.router.navigate(['login']);
          } else {
            this.isLogged = true;
          }
       });
     }
 
-    logout(){
+    logout() {
       this.authService.logout();
       this.router.navigate(['login']);
     }

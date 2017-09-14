@@ -7,10 +7,10 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   styleUrls: ['./students.component.scss']
 })
 export class StudentsComponent implements OnInit {
-  
+
   students: FirebaseListObservable<any[]>;
 
-  constructor(db: AngularFireDatabase) { 
+  constructor(db: AngularFireDatabase) {
     this.students = db.list('students');
   }
 
