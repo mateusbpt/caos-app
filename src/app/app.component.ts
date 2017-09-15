@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './providers/auth.service'
+import { AuthService } from './providers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent {
 
   isLogged: Boolean;
 
-  constructor(private authService: AuthService, private router: Router){
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.afa.authState.subscribe(
       auth => {
         if (auth == null) {

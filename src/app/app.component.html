@@ -1,12 +1,31 @@
-<nav *ngIf="isLogged" class="navbar navbar-expand navbar-inverse bg-primary caos-navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Caos.app</a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/avaliation">+ Avaliação</a>
-        </li>
-      </ul>
-      <button class="btn btn-secondary" (click)="logout()">Sair</button>
+<nav *ngIf="isLogged" class="navbar navbar-toggleable-md navbar-light bg-inverse caos-navbar">
+  <a class="navbar-brand" routerLink="/">
+      <span class="navbar-span">
+        <img class="image-logo" src="assets/images/logo-crescer.svg" alt="logo-crescer" />
+      </span>
+      <span class="navbar-span">Controle de atividades dos Alunos</span>    
+  </a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="navbarCaos"
+    aria-expanded="false">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCaos" [ngbCollapse]="!isNavbarCollapsed">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/avaliation">Adicionar Avaliação</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Adicionar Aluno</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav hidden-lg-up">
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Sair</a>
+      </li>
+    </ul>
   </div>
+  <button class="btn btn-primary hidden-md-down" (click)="logout()">Sair</button>
 </nav>
 <router-outlet></router-outlet>

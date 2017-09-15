@@ -17,6 +17,11 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.authService.afa.authState.subscribe(auth => {
+      if (auth == null) {
+        this.router.navigate(['login']);
+      }
+    });
   }
 
   formAddStudent(f: NgForm) {
