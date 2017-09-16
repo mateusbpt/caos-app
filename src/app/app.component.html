@@ -3,7 +3,7 @@
       <span class="navbar-span">
         <img class="image-logo" src="assets/images/logo-crescer.svg" alt="logo-crescer" />
       </span>
-      <span class="navbar-span">Controle de atividades dos Alunos</span>    
+      <span class="navbar-span">Controle de Avaliações</span>    
   </a>
   <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="navbarCaos"
     aria-expanded="false">
@@ -22,10 +22,10 @@
     </ul>
     <ul class="navbar-nav hidden-lg-up">
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Sair</a>
+        <a class="nav-link pointer" (click)="logout()">Sair</a>
       </li>
     </ul>
   </div>
-  <button class="btn btn-primary hidden-md-down" (click)="logout()">Sair</button>
+  <button class="btn btn-primary hidden-md-down pointer" (click)="logout()">Sair</button>
 </nav>
 <router-outlet></router-outlet>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { NgClass } from '@angular/common';
 import { AuthService } from '../providers/auth.service';
 
 @Component({
@@ -22,6 +23,12 @@ export class StudentsComponent implements OnInit {
         this.router.navigate(['login']);
       }
     });
+  }
+
+  verifyRegularRating(avaliations:Array<any>){
+    let lastAvaliation = avaliations[avaliations.length-1];
+    console.log(lastAvaliation.rating === "regular");
+    return lastAvaliation.rating === "regular";
   }
 
 }

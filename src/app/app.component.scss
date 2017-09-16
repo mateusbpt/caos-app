@@ -1,17 +1,21 @@
 .caos-navbar {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .navbar {
-    align-items: initial;
-    padding: 1rem 1rem;
+  align-items: initial;
+  padding: 1rem 1rem;
 }
 
 .navbar-span {
-    display: flex;
-    font-size: 10px;
+  display: flex;
+  font-size: 10px;
 }
 
 .navbar-brand {
-    margin-right: 1rem;
+  margin-right: 1rem;
+}
+
+.pointer {
+  cursor: pointer;
 }

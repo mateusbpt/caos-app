@@ -1,21 +1,41 @@
-.box{
-    margin-top: 20px;
-    margin-bottom: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 40px;
-    .title {
-        margin-bottom: 20px;
-    }
-    .box-mark{
-        max-height: 500px;
-        overflow: auto;
-    }
+.box {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 40px;
+  .title {
+    margin-bottom: 20px;
+  }
+  .box-mark {
+    max-height: 500px;
+    overflow: auto;
+  }
 }
 
 .avaliation-title {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #detail {
-    color: #222;
+  color: #222;
+}
+
+.badge {
+  padding: .45em 1.0em;
+}
+
+.badge-regular {
+    background-color: #d9534f;
+}
+
+.badge-mediano {
+    background-color: #f0ad4e;
+}
+
+.badge-bom {
+    background-color: #1F9BCF;
+}
+
+.badge-excelente {
+    background-color: #4BBF73;
 }

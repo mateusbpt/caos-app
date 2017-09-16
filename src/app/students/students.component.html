@@ -1,13 +1,13 @@
 <div class="container" id="students">
-  <h3 class="title">Alunos Cadastrados: </h3>
+  <h4 class="title">Lista de Alunos: </h4>
   <div class="row">
     <div *ngFor="let student of students | async | orderBy: 'name'" class="col-xs-12 com-sm-12 col-md-4 student">
-      <div class="card">
+      <div class="card" [ngClass]="{ 'avaliation-regular': verifyRegularRating(student.avaliations) }">
         <img class="card-img-top" [src]="student.profileImage" alt="student-image">
         <div class="card-block">
           <h5 class="card-title">{{ student.name }}</h5>
-          <h6 class="card-title">{{ student.cwiName }}</h6>
-          <a [routerLink]="['/student', student.cwiName]" class="btn btn-block btn-primary">Verificar Avaliações</a>
+          <h6 class="card-title text-muted">{{ student.cwiName }}</h6>
+          <a [routerLink]="['/student', student.cwiName]" class="btn btn-block btn-primary" [ngClass]="{ 'btn-danger': verifyRegularRating(student.avaliations) }" >Verificar Avaliações</a>
         </div>
       </div>
     </div>

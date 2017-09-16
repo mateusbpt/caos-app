@@ -16,7 +16,8 @@
       </div>
       <div *ngIf="student.avaliations" class="col-xs-12 com-sm-12 col-md-12">
         <div class="box" *ngFor="let avaliation of student.avaliations | orderBy: title: true">
-          <h6 class="title">{{ avaliation.title }}</h6>
+            <h6 class="badge badge-{{ avaliation.rating }} float-right">{{ avaliation.rating }}</h6>
+            <h6 class="title">{{ avaliation.title }}</h6>
           <div class="box-mark">
             <markdown [(data)]="avaliation.text"></markdown>
           </div>

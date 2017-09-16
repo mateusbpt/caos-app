@@ -13,13 +13,16 @@ import { ToastrService } from 'ngx-toastr';
 export class AvaliationComponent implements OnInit {
 
   students: FirebaseListObservable<any[]>;
+  rating: Array<any>;
 
   constructor(private authService: AuthService, private router: Router, private db: AngularFireDatabase, private toastr: ToastrService) {
       this.students = db.list('/students');
+      this.rating = new Array<any>();
   }
 
   ngOnInit() {
-  }
+    this.rating = ["Regular", "Mediano", "Bom", "Excelente"];
+ } 
 
   formAddAvaliation(g: NgForm) {
     const student = this.db.object('/students/' + g.value.studentKey);
@@ -29,7 +32,8 @@ export class AvaliationComponent implements OnInit {
         avaliations = e.avaliations;
       }
     });
-    avaliations.push({ monitorName: g.value.monitorName, dateAvaliation: Date.now(), title: g.value.title, text: g.value.text  });
+    let rating:string = g.value.rating;
+    avaliations.push({ monitorName: g.value.monitorName, dateAvaliation: Date.now(), title: g.value.title, text: g.value.text, rating: rating.toLowerCase() });
     student.update({avaliations: avaliations }).then(e => {
       g.form.reset();
       this.toastr.success('Avaliação adicionada com êxito.', 'Sucesso');

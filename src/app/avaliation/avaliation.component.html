@@ -5,9 +5,15 @@
       <h6>Cadastro de avaliações realizadas para um aluno</h6>
       <form id="avaliacao" #g="ngForm" (submit)="formAddAvaliation(g)">
         <div class="row">
-          <div class="form-group col-xs-12 com-sm-12 col-md-12">
+          <div class="form-group col-xs-12 com-sm-12 col-md-6">
             <label>Título da Avaliação: </label>
             <input type="text" class="form-control" ngModel name="title" required>
+          </div>
+          <div class="form-group col-xs-12 com-sm-12 col-md-6">
+            <label>Aluno Avaliado: </label>
+            <select class="form-control" ngModel name="studentKey" required>
+                <option *ngFor="let student of students | async | orderBy: 'name'" [value]="student.$key">{{ student.name }}</option>
+            </select>
           </div>
           <div class="form-group col-xs-12 com-sm-12 col-md-6">
             <label>Avaliação (aceita o formato markdown): </label>
@@ -24,10 +30,10 @@
             <input type="text" class="form-control" ngModel name="monitorName" required>
           </div>
           <div class="form-group col-xs-12 com-sm-12 col-md-6">
-            <label>Aluno Avaliado</label>
-            <select class="form-control" ngModel name="studentKey" required>
-                <option *ngFor="let student of students | async | orderBy: 'name'" [value]="student.$key">{{ student.name }}</option>
-            </select>
+            <label>Conceito da Avaliação: </label>
+            <select class="form-control" ngModel name="rating" required>
+              <option *ngFor="let r of rating | orderBy: 'rating'" [value]="r">{{ r }}</option>
+          </select>
           </div>
         </div>
         <button [disabled]="isFormInvalid(g)" type="submit" class="btn btn-primary">Adicionar Avaliação</button>
