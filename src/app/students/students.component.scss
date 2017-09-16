@@ -14,7 +14,22 @@
     margin: 0 auto;
   }
   .avaliation-regular {
-    background-color: rgba(255,0,0, 0.075);
-    border: 2px solid rgba(255,0,0,0.2);
+    background-color: rgba(217,83,79, 0.3);
+    border: 1px solid rgba(217,83,79, 0.5);
+    h4, h5, h6 {
+      color: #d9534f;
+    }
+    .badge {
+      background-color: #d9534f;
+    }
+  }
+  .badge {
+    padding: 0.7em 0.5em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+  .letter-2px {
+    letter-spacing: 2px;
   }
 }

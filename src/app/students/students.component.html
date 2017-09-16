@@ -5,9 +5,13 @@
       <div class="card" [ngClass]="{ 'avaliation-regular': verifyRegularRating(student.avaliations) }">
         <img class="card-img-top" [src]="student.profileImage" alt="student-image">
         <div class="card-block">
-          <h5 class="card-title">{{ student.name }}</h5>
-          <h6 class="card-title text-muted">{{ student.cwiName }}</h6>
-          <a [routerLink]="['/student', student.cwiName]" class="btn btn-block btn-primary" [ngClass]="{ 'btn-danger': verifyRegularRating(student.avaliations) }" >Verificar Avaliações</a>
+          <h4 class="card-title letter-2px">{{ student.name }}</h4>
+          <h5 class="card-title">{{ student.cwiName }}</h5>
+          <div class="text-right">
+              <span *ngIf="student.avaliations" class="badge badge-primary">{{ student.avaliations.length === 1 ? student.avaliations.length + ' avaliação' : student.avaliations.length + ' avaliações' }}</span>
+              <span *ngIf="!student.avaliations" class="badge badge-primary">Sem avaliações</span>
+          </div>
+          <a [routerLink]="['/student', student.cwiName]" class="btn btn-block btn-primary" [ngClass]="{ 'btn-danger': verifyRegularRating(student.avaliations) }">Verificar Avaliações </a>
         </div>
       </div>
     </div>
