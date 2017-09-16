@@ -27,7 +27,7 @@ export class StudentsDetailComponent implements OnInit, OnDestroy {
           this.router.navigate(['login']);
         }
       }));
-    this.student.profileImage = '/assets/images/user.jpg';
+    this.student.profileImage = '/assets/images/user.png';
     this.subscription.add(this.findByName(this.activeRoute.snapshot.params.name));
   }
 
