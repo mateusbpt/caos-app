@@ -21,6 +21,11 @@ export class AvaliationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.afa.authState.subscribe(auth => {
+      if (auth == null) {
+        this.router.navigate(['login']);
+      }
+    });
     this.rating = ["Regular", "Bom", "Excelente"];
  } 
 
