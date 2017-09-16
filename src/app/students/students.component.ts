@@ -27,7 +27,6 @@ export class StudentsComponent implements OnInit {
 
   verifyRegularRating(avaliations:Array<any>){
     let lastAvaliation = avaliations[avaliations.length-1];
-    console.log(lastAvaliation.rating === "regular");
     return lastAvaliation.rating === "regular";
   }
 

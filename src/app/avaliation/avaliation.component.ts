@@ -21,7 +21,7 @@ export class AvaliationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rating = ["Regular", "Mediano", "Bom", "Excelente"];
+    this.rating = ["Regular", "Bom", "Excelente"];
  } 
 
   formAddAvaliation(g: NgForm) {
