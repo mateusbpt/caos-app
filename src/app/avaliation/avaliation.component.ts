@@ -14,6 +14,7 @@ export class AvaliationComponent implements OnInit {
 
   students: FirebaseListObservable<any[]>;
   rating: Array<any>;
+  private submit: Boolean;
 
   constructor(private authService: AuthService, private router: Router, private db: AngularFireDatabase, private toastr: ToastrService) {
       this.students = db.list('/students');
@@ -30,6 +31,7 @@ export class AvaliationComponent implements OnInit {
  } 
 
   formAddAvaliation(g: NgForm) {
+    this.submit = true;
     const student = this.db.object('/students/' + g.value.studentKey);
     let avaliations = [];
     student.subscribe(e => {
@@ -42,13 +44,16 @@ export class AvaliationComponent implements OnInit {
     student.update({avaliations: avaliations }).then(e => {
       g.form.reset();
       this.toastr.success('Avaliação adicionada com êxito.', 'Sucesso');
+      this.submit = false;
     }).catch(e => {
+      g.form.reset();
       this.toastr.error('Ocorreu um problema ao adicionar a avaliação, tente novamente.', 'Erro');
+      this.submit = false;
     });
   }
 
   isFormInvalid(h: NgForm) {
-    return !h.form.valid;
+    return !h.form.valid || this.submit;
   }
 
 }

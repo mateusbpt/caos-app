@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
+  private submit: Boolean;
+
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
@@ -22,19 +24,23 @@ export class LoginComponent implements OnInit {
   }
 
   isFormInvalid(f: NgForm) {
-    return !f.form.valid;
+    return !f.form.valid || this.submit;
   }
 
   formLogin(f: NgForm) {
+    this.submit = true;
     this.login(f.form.controls.email.value, f.form.controls.password.value);
+    f.form.reset();
   }
 
   login(email: string, password: string) {
     this.authService.login(email, password)
     .then(res => {
       this.router.navigate(['']);
+      this.submit = false;
     }).catch(res => {
       this.toastr.error('Usuário ou senha incorretos, tente novamente.', 'Erro');
+      this.submit = false;
     });
   }
 

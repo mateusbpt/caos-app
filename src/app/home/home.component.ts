@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent implements OnInit {
 
+  private submit: Boolean;
+
   constructor(private authService: AuthService, private router: Router, private db: AngularFireDatabase, private toastr: ToastrService) {
    }
 
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   formAddStudent(f: NgForm) {
+  this.submit = true;
    this.db.list('/students').push({
       name: f.value.name,
       cwiName: f.value.cwiName,
@@ -32,13 +35,16 @@ export class HomeComponent implements OnInit {
     }).then(e => {
       f.form.reset();
       this.toastr.success('Aluno adicionado com êxito.', 'Sucesso');
+      this.submit = false;
     }).catch(e => {
+      f.form.reset();
       this.toastr.error('Ocorreu um problema ao adicionar o aluno, tente novamente.', 'Erro');
+      this.submit = false;
     });
   }
 
   isFormInvalid(h: NgForm) {
-    return !h.form.valid;
+    return !h.form.valid || this.submit;
   }
 
 }
