@@ -40,7 +40,16 @@ export class AvaliationComponent implements OnInit {
       }
     });
     let rating:string = g.value.rating;
-    avaliations.push({ monitorName: g.value.monitorName, dateAvaliation: Date.now(), title: g.value.title, text: g.value.text, rating: rating.toLowerCase() });
+    avaliations.push({ 
+      monitorName: g.value.monitorName, 
+      dateAvaliation: Date.now(), 
+      title: g.value.title, 
+      build: g.value.build,
+      tests: g.value.tests,
+      indentation: g.value.indentation,
+      comments: g.value.comments, 
+      rating: rating.toLowerCase() 
+    });
     student.update({avaliations: avaliations }).then(e => {
       g.form.reset();
       this.toastr.success('Avaliação adicionada com êxito.', 'Sucesso');
